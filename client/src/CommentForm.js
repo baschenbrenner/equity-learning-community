@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from "./context/UserContext"
 
-const CommentForm = ({ user, currentProj, setNewComment, setProjects, projects }) => {
-    const [body, setBody] = useState()
+const CommentForm = ({  currentProj, setNewComment, setProjects, projects }) => {
+    const [body, setBody] = useState("")
     const [errors, setErrors] = useState([])
+    const { user } = useContext(UserContext)
 
     const addComment = (comment) => {
         const findProj = projects.find((item) => item.id === currentProj.id)

@@ -5,13 +5,13 @@ const CommentCard = ({ comment, setProjects , projects, currentProj }) => {
     const [editInput, setEditInput] = useState(`${comment.body}`)
     const {user} = useContext(UserContext)
 
-    const deletecomment = (comment) => {        
+    const deleteComment = (comment) => {        
         const newprojcomments = currentProj.comments.filter(com => com.id !== comment.id)
         currentProj.comments = newprojcomments
         setProjects (projects.map(item => item.id === currentProj.id ? currentProj : item))
     }
     
-    const editcomment = (comment) => {
+    const editComment = (comment) => {
         let newprojcomments = currentProj.comments.map(com => com.id === comment.id ? comment : com)
         currentProj.comments = newprojcomments
         setProjects (projects.map(item => item.id === currentProj.id ? currentProj : item))
@@ -23,7 +23,7 @@ const CommentCard = ({ comment, setProjects , projects, currentProj }) => {
             method: 'DELETE',
         })
         .then((r) => r.json())
-        .then((data) => deletecomment(data))
+        .then((data) => deleteComment(data))
     }
 
     const handleEdit = (e) => {
@@ -38,7 +38,7 @@ const CommentCard = ({ comment, setProjects , projects, currentProj }) => {
             }),
         })
         .then((r) => r.json())
-        .then((data) => editcomment(data))
+        .then((data) => editComment(data))
         setEditInput(`${comment.body}`)
         setEdit(false)
     }
@@ -56,6 +56,9 @@ const CommentCard = ({ comment, setProjects , projects, currentProj }) => {
     }
 
     const showEdit = () => {
+        
+        const d = new Date(comment.updated_at)
+        const dateString = d.toString().slice(0,28)
         if (edit) {
             return (
                 <form onSubmit={handleEdit}>
@@ -66,7 +69,11 @@ const CommentCard = ({ comment, setProjects , projects, currentProj }) => {
             )
         }
         else {
-            return <p id='commentP'>{comment.body} - {comment.usernam}</p>
+            return (<div>
+                    <h4>{dateString}</h4>
+                    <p>{comment.body} - {comment.username}</p>
+
+            </div>)
         }
     }
     
@@ -74,8 +81,7 @@ const CommentCard = ({ comment, setProjects , projects, currentProj }) => {
     
 
     return (
-        <div id='commentDiv'>
-            <p id='user'>User: {comment.username}</p>
+        <div className='commentDiv'>
             {showEdit()}
             {user.id === comment.user_id ? <button onClick={handleDelete}>Delete</button> : null}
             {user.id === comment.user_id ? <button onClick={onEditClick}>Edit</button> : null}

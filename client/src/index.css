@@ -76,6 +76,14 @@
     display: flex;
     flex-direction: column;
   }
+
+  .commentDiv {
+    margin: 10px;
+    padding: 5px;
+    background-color: #888;
+    font-size: large;
+    border: dashed 2px black;
+  }
   
   #signupForm label {
     margin-bottom: 5px;

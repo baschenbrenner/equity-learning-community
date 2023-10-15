@@ -2,29 +2,27 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from './context/UserContext';
 
 const SignupForm = ({ setLogin }) => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmation, setConfirmation] = useState('')
-    const [name, setName] = useState('')
-    const [bio, setBio] = useState('')
-    const [email, setEmail] = useState('')
+    const [signupInfo, setSignupInfo] = useState({
+        username: "",
+        password: "",
+        name: "",
+        email: "",
+        bio: ""
+
+    })
+  
     const [errors, setErrors] = useState([])
     const { setUser } = useContext(UserContext);
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const data = {
-            username,
-            password,
-            password_confirmation: confirmation,
-            name
-        }
+       
         fetch("/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),            
+            body: JSON.stringify(signupInfo),            
         })
         .then((r) => {
             if (r.ok) {
@@ -36,33 +34,26 @@ const SignupForm = ({ setLogin }) => {
             }
         })
     }
+    const handleChange = (e) => {
+        setSignupInfo({...signupInfo, [e.target.name]: e.target.value})
 
-    const handleUsername = (e) => {
-        setUsername(e.target.value)
     }
-
-    const handlePassword = (e) => {
-        setPassword(e.target.value)
-    }
-
-    const handleConfirmation = (e) => {
-        setConfirmation(e.target.value)
-    }
-
-    const handleName = (e) => {
-        setName(e.target.value)
-    }
+ 
 
     return (
         <form id='signupForm' onSubmit={handleSubmit}>
             <label>Username</label>
-            <input type='Text' onChange={handleUsername} value={username} />
+            <input type='Text' name="username" onChange={handleChange} value={signupInfo.username} />
             <label>Password</label>
-            <input type='Password' onChange={handlePassword} value={password} />
-            <label>Confirm Password</label>
-            <input type='Password' onChange={handleConfirmation} value={confirmation} />
-            <label>Enter your display name</label>
-            <input type='Text' onChange={handleName} value={name} />
+            <input type='Text' name="password" onChange={handleChange} value={signupInfo.password} />
+            <label>Enter your Full Name</label>
+            <input type='Text' name="name" onChange={handleChange} value={signupInfo.name} />
+            <label>Enter a Bio (optional, can be added later)</label>
+            <textarea name="bio" rows="4" cols="50" onChange={handleChange} value={signupInfo.bio}>
+            At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+            </textarea>
+            <label>Enter your Email</label>
+            <input type='Text' name="email" onChange={handleChange} value={signupInfo.email} />
             {errors.length === 0 ? null : errors.map(error => <p className='error'>{error}</p>)} 
             <button>Submit</button>
         </form>
