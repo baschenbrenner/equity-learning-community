@@ -1,0 +1,335 @@
+/* CSS Styling for the Login page */
+#login {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-family: Arial, sans-serif;
+  }
+  
+  #loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #loginForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #loginForm input[type='text'],
+  #loginForm input[type='password'] {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #loginButton,
+  #signupButton {
+    padding: 10px;
+    width: 100%; /* Add equal width for buttons */
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #loginButton:hover,
+  #signupButton:hover {
+    background-color: #cc0000;
+  }
+  
+  /* CSS Styling for the LoginForm component */
+  #loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #loginForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #loginForm input[type='text'],
+  #loginForm input[type='password'] {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #loginForm button {
+    padding: 10px;
+    width: 100%; /* Add equal width for buttons */
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #loginForm button:hover {
+    background-color: #cc0000;
+  }
+  
+  /* CSS Styling for the SignupForm component */
+  #signupForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #signupForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #signupForm input[type='text'],
+  #signupForm input[type='password'] {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  #signupForm button {
+    padding: 10px;
+    width: 100%; /* Add equal width for buttons */
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #signupForm button:hover {
+    background-color: #cc0000;
+  }
+
+  nav {
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #ff7f50;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+  }
+  
+  #navButton {
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #navButton:hover {
+    background-color: #ff6347;
+  }
+  
+  #welcomePage {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  #Welcome {
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .WelcomeP {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  iframe {
+    width: 560px;
+    height: 315px;
+    margin: 20px 0;
+  }
+  
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #DivContainer iframe {
+    margin-bottom: 10px;
+  }
+  
+  #WelcomeA {
+    display: block;
+    font-size: 16px;
+    color: #0000ff;
+    margin-top: 10px;
+  }
+  
+  #EncabForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  input {
+    width: 300px;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #ff6347;
+  }
+  
+  button:active {
+    background-color: #ff7f50;
+  }
+  
+  button.cancel {
+    background-color: #f44336;
+  }
+  
+  button.cancel:hover {
+    background-color: #d32f2f;
+  }
+  
+  button.cancel:active {
+    background-color: #c62828;
+  }
+  
+  #encabCard {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  #encabCardPic {
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  #encabCard h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  #encabCard p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  #listLink {
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    transition: background-color 0.3s ease;
+  }
+  
+  #listLink:hover {
+    background-color: #e6e6e6;
+  }
+  
+  #EncabH1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  #EncabP {
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  #encabAddButton {
+    display: block;
+    margin: 0 auto;
+  }
+
+  #encab {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  #encab h1 {
+    font-size: 24px;
+  }
+  
+  #encab img#encabimg {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+  
+  #encab p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  #reviewForm {
+    margin-bottom: 20px;
+  }
+  
+  #reviewFormForm {
+    margin-bottom: 10px;
+  }
+  
+  #reviewLabel {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  #reviewInput {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .error {
+    color: #FF0000;
+  }
