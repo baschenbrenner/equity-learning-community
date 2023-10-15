@@ -16,6 +16,7 @@ function App() {
       fetch('/projects')
       .then((r) => r.json())
       .then((item) => setProjects(item))
+      .catch(error => console.log(error))
   }, [user])
 
   if (!user) return <Login />
@@ -28,6 +29,7 @@ function App() {
         <Route exact path = "/" element={<Home user={user} />}/>
       
         <Route exact path = "/project-list" element={<ProjectList projects={projects} setProjects={setProjects}/>}/>
+        <Route exact path = "/my-projects" element={<ProjectList projects={user.created_projects} setProjects={setProjects} type={"created"}/>}/>
   
         <Route path = "/project-list/:id" element={<Project projects={projects} setProjects={setProjects} user={user}/>}/>
           

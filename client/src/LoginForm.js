@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState([])
     const { setUser } = useContext(UserContext);
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -18,7 +20,11 @@ const LoginForm = () => {
         })
         .then((r) => {
             if (r.ok) {
-            r.json().then(user => setUser(user))
+            r.json().then(user => {
+
+                setUser(user)
+                navigate('/')
+            })
             }
             else {
                 r.json().then(error => setErrors(error.errors))

@@ -1,40 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from './context/UserContext';
 
-const AddProjectForm = ({ projects, setProjects }) => {
-    const [name, setName] = useState('')
-    const [image, setImage] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState()
+const AddProjectForm = ({ projects, setProjects, setNewProj }) => {
+    const {user, setUser} = useContext(UserContext)
+    const [projectInfo, setProjectInfo] = useState({
+        title: "",
+        description: "",
+        main_goal: "",
+        secondary_goal: ""
+
+    })
+  
+    
     const [errors, setErrors] = useState([])
     
     
-    const onNameChange = (e) => setName(e.target.value)
-    const onImageChange = (e) => setImage(e.target.value)
-    const onDescriptionChange = (e) => setDescription(e.target.value)
-    const onPriceChange = (e) => setPrice(e.target.value)
+    const handleChange = (e) => {
+        setProjectInfo({...projectInfo, [e.target.name]: e.target.value })
+    }
+    
+   
 
     const handleNewprojectClick = (e) => {
         e.preventDefault()
-        const   data = {
-            name: name,
-            description: description,
-            image_url: image,
-            price: price,
-        }
+      
         fetch ('/projects', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(data),            
+            body: JSON.stringify(projectInfo),            
         })
         .then ((r) => {
             if (r.ok) {
-                r.json().then ((data) => addproj(data))
-                setName('')
-                setDescription('')
-                setImage('')
-                setPrice()
+                r.json().then ((newProj) => {
+                    addProj(newProj)
+                    setProjectInfo({
+                        title: "",
+                        description: "",
+                        main_goal: "",
+                        secondary_goal: ""
+                
+                    })
+                    setNewProj(false)
+
+
+                })
+            
             }
             else {
                 r.json().then((eData) => setErrors(eData.errors))
@@ -42,20 +54,26 @@ const AddProjectForm = ({ projects, setProjects }) => {
         })
     }
 
-    const addproj = (proj) => {
+    const addProj = (proj) => {
+        setUser({...user, created_projects: [...user.created_projects, proj]})
         setProjects(projects.concat(proj))
     }
 
     return (
         <form id='ProjForm' onSubmit={handleNewprojectClick}>
-            <label>project</label>
-            <input type='TEXT' value={name} onChange={onNameChange} />
-            <label>Image Url</label>
-            <input type='TEXT' value={image} onChange={onImageChange} />
-            <label>Description</label>
-            <input type='TEXT' value={description} onChange={onDescriptionChange} />
-            <label>Price</label>
-            <input type='NUMBER' value={price} onChange={onPriceChange} />
+            <label>Project Title: </label>
+            <input type='TEXT' name="title" value={projectInfo.title} onChange={handleChange} /> 
+            <br></br> 
+            <label>Description: </label>
+            <textarea name="description" rows="4" cols="50" onChange={handleChange} value={projectInfo.description}>
+            </textarea>
+            <br></br> 
+            <label> Main Goal </label>
+            <input type='TEXT' name="main_goal" value={projectInfo.main_goal} onChange={handleChange} />
+            <br></br> 
+            <label> Secondary Goal </label>
+            <input type='TEXT' name="secondary_goal" value={projectInfo.secondary_goal} onChange={handleChange} />
+            <br></br>
             {errors.length === 0 ? null : errors.map(error => <p className='error'>{error}</p>)}
             <button>Submit</button>
         </form>

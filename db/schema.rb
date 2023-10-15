@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_145542) do
     t.string "description"
     t.string "main_goal"
     t.string "secondary_goal"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

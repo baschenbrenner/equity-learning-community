@@ -9,7 +9,7 @@ end
 
 20.times do 
 
-    Project.create(title: Faker::Commerce.product_name, description: Faker::Lorem.sentence(word_count: rand(5..12)), main_goal: "to help students")
+    Project.create(title: Faker::Commerce.product_name, description: Faker::Lorem.sentence(word_count: rand(5..12)), main_goal: "to help students", user_id: rand(1...10))
 
 end
 

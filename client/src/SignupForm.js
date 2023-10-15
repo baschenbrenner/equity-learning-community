@@ -50,7 +50,6 @@ const SignupForm = ({ setLogin }) => {
             <input type='Text' name="name" onChange={handleChange} value={signupInfo.name} />
             <label>Enter a Bio (optional, can be added later)</label>
             <textarea name="bio" rows="4" cols="50" onChange={handleChange} value={signupInfo.bio}>
-            At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
             </textarea>
             <label>Enter your Email</label>
             <input type='Text' name="email" onChange={handleChange} value={signupInfo.email} />
