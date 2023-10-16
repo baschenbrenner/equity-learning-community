@@ -7,6 +7,7 @@ import Project from './Project';
 import Home from './Home';
 import AddProjectForm from './AddProjectForm';
 import { UserContext } from './context/UserContext';
+import EditProfile from './EditProfile';
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -32,10 +33,9 @@ function App() {
         <Route exact path = "/my-projects" element={<ProjectList projects={user.created_projects} setProjects={setProjects} type={"created"}/>}/>
   
         <Route path = "/project-list/:id" element={<Project projects={projects} setProjects={setProjects} user={user}/>}/>
-          
-        
-        <Route path="/project-form" element={<AddProjectForm projects={projects} setProjects={setProjects}/>}>          
-        </Route>
+        <Route path="/edit-profile" element={<EditProfile />}/>          
+        <Route path="/project-form" element={<AddProjectForm projects={projects} setProjects={setProjects}/>}/>          
+  
       </Routes>
     </div>
   );

@@ -21,6 +21,7 @@ const NavBar = ({ setUser }) => {
             <NavLink to='/'>Home</NavLink>
             <NavLink to='/project-list'>Projects</NavLink>
             <NavLink to='/my-projects'>My Projects</NavLink>
+            <NavLink to='/edit-profile'>Edit Profile</NavLink>
             <button onClick={handleLogout} id='navButton'>Logout</button>
         </nav>
     )

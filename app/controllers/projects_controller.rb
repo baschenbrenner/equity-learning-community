@@ -7,12 +7,8 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        project = @current_user.created_projects.create(project_params)
-        if project.valid?
-            render json: project, status: :created
-        else
-            render json: {  errors: project.errors.full_messages  }, status: :unprocessable_entity
-        end
+        project = @current_user.created_projects.create!(project_params)
+        render json: project, status: :created
     end
 
     
