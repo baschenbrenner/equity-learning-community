@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <NavBar setUser={setUser}/>
       <Routes>
-        <Route exact path = "/" element={<Home user={user} />}/>
+        <Route exact path = "/home" element={<Home user={user} />}/>
       
         <Route exact path = "/project-list" element={<ProjectList projects={projects} setProjects={setProjects}/>}/>
         <Route exact path = "/my-projects" element={<ProjectList projects={user.created_projects} setProjects={setProjects} type={"created"}/>}/>
