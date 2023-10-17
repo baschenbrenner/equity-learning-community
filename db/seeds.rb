@@ -14,7 +14,7 @@ end
 end
 
 50.times do
-Comment.create(user_id: rand(1...10), project_id: rand(1..20), body: Faker::Lorem.sentence)
+    Comment.create(user_id: rand(1...10), project_id: rand(1..20), body: Faker::Lorem.sentence)
 end
 
 puts "seeded"
