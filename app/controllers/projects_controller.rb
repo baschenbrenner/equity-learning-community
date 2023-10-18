@@ -11,6 +11,11 @@ class ProjectsController < ApplicationController
         render json: project, status: :created
     end
 
+    def show
+        project = Project.find(params[:id])
+        render json: project
+    end
+
     
     private
 

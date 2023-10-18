@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :projects, only: [:index, :create]
+  resources :projects, only: [:index, :create, :show]
   resources :comments, only: [:index, :create, :destroy, :update]
   resources :users, only: [:index, :update]
 
+  
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"

@@ -21,7 +21,7 @@ const AddProjectForm = ({ projects, setProjects, setNewProj }) => {
     
    
 
-    const handleNewprojectClick = (e) => {
+    const handleNewProjectClick = (e) => {
         e.preventDefault()
       
         fetch ('/projects', {
@@ -32,6 +32,7 @@ const AddProjectForm = ({ projects, setProjects, setNewProj }) => {
             body: JSON.stringify(projectInfo),            
         })
         .then ((r) => {
+            console.log(r)
             if (r.ok) {
                 r.json().then ((newProj) => {
                     addProj(newProj)
@@ -60,7 +61,7 @@ const AddProjectForm = ({ projects, setProjects, setNewProj }) => {
     }
 
     return (
-        <form id='ProjForm' onSubmit={handleNewprojectClick}>
+        <form id='ProjForm' onSubmit={handleNewProjectClick}>
             <label>Project Title: </label>
             <input type='TEXT' name="title" value={projectInfo.title} onChange={handleChange} /> 
             <br></br> 
